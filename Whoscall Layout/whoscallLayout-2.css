@@ -1,8 +1,58 @@
-body{
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
     font-family: 'Noto Sans TC', -apple-system, 'Microsoft JhengHei', '微軟正黑體';
 }
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* ----------以上為 reset---------- */
+
+/* ----------導覽列選單---------- */
 .content-Header{
     width: 100%;
+    height: 80px;
     padding: 0 50px;
     box-sizing: border-box;
     box-shadow: 0 0 10px #717b8e;
@@ -13,16 +63,19 @@ body{
     justify-content: space-between;
     position: fixed;
     z-index: 1;
+    top: 0px;
 }
 .content-Header .main-Logo{
-    margin-right: 20px;
+    width: 140px;
+    height: 30px;
     overflow: hidden;
-    background-image:url(https://assets.whoscall.com/assets/media/images/logo-1ac05e55a23c9d1d8319e8ec752b8f98.svg) ;
-    background-repeat: no-repeat;
-    background-position: center;
     text-indent: 100%;
     text-align: left;
-    white-space: nowrap;
+    background-image: url(img/asset\ 6.svg);
+    /* https://assets.whoscall.com/assets/media/images/logo-1ac05e55a23c9d1d8319e8ec752b8f98.svg */
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 20px;
 }
 .main-Nav{
     margin-right: 10px;
@@ -30,7 +83,7 @@ body{
     flex-grow: 1;
 }
 .main-Nav a{
-    padding: 0 20px;
+    padding: 0 15px;
     text-decoration: none;
     color: #2c323f;
     font-weight: 800;
@@ -47,19 +100,26 @@ button{
     padding: 10px 40px;
     border-radius: 100px;
 }
-/* ---------------------------------- */
+
+/* ----------主視覺廣告---------- */
 .section-KV{
     width: 100%;
     background-image: url('https://d3qzy1rn79qj7v.cloudfront.net/hero_images/valid-number-1440.jpg');
     background-size: cover;
-    background-position:center
+    background-position:center;
+    margin: 80px 0 0;
+    display: flex;
+    justify-content: space-between;
 }
 .section-KV .KV{
-    margin: auto;
-    padding: 85px 0 0;
+    width: 960px;
 }
-.section-KV .KV h2{
+.section-KV .KV .main-Title{
+    align-items
+}
+.section-KV .KV .main-Title h2{
     font-size: 42px;
+    line-height: 130px;
     color: #00c300;
 }
 .section-KV .KV p{
@@ -78,11 +138,13 @@ button{
 .section-KV .KV .note{
     color: #00c300;
     font-size: 18px;
+    /* line-height: normal; */
 }
 .section-KV .pic:last-child{
     text-align: right;
 }
 
+/* ----------市場調查---------- */
 .section-MarketingResearch .MarketingResearch{
     width: 960px;
     margin: auto;
@@ -135,7 +197,7 @@ button{
     font-size: 14px;
 }
 
-/* ---------------------------------- */
+/* ----------拓展業務---------- */
 .section-ExpandBusiness{
     background-color: #f5f6f9;
     padding: 40px 0;
@@ -148,6 +210,7 @@ button{
     font-size: 32px;
     font-weight: 900;
     text-align: center;
+    padding:20px 0 40px;
 }
 .section-ExpandBusiness .item-List{
     display: flex;
@@ -158,10 +221,10 @@ button{
     text-align: center;
 }
 .section-ExpandBusiness .item-List .pic img{
-    width: 70%;
+    width: 50%;
 }
 
-/* ---------------------------------- */
+/* ----------用戶經驗---------- */
 .section-UserExprience{
     padding: 50px 0;
 }
@@ -188,8 +251,11 @@ button{
     padding: 20px;
 }
 .section-UserExprience .UserExprience .txt img{
-    display: flex;
-    flex-direction: row-reverse;
+    -moz-transform:scaleX(-1);
+    -webkit-transform:scaleX(-1);
+    -o-transform:scaleX(-1);
+    transform:scaleX(-1);
+    margin: 2px;
 }
 .section-UserExprience .UserExprience .pic-Btm img{
     width: 150px;
@@ -199,8 +265,7 @@ button{
     width: 300px;
 }
 
-
-/* ---------------------------------- */
+/* ----------馬上申請---------- */
 .section-ApplyNow{
     background-color: #f5f6f9;
     padding: 100px 0;
@@ -214,7 +279,7 @@ button{
     list-style-type: none;
 }
 
-/* ---------------------------------- */
+/* ----------頁尾選單---------- */
 footer{
     padding: 10px 0 30px;
     background-color: #2c323f;
@@ -260,7 +325,6 @@ footer{
     font-size: 12px;
     text-decoration: none;
 }
-
 .footer-Copyright{
     width: 960px;
     margin: auto;
