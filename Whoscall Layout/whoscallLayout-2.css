@@ -82,7 +82,6 @@ button{
 .section-KV .pic:last-child{
     text-align: right;
 }
-/* ---------------------------------- */
 
 .section-MarketingResearch .MarketingResearch{
     width: 960px;
@@ -100,7 +99,6 @@ button{
     font-size: 32px;
     font-weight: 700;
 }
-
 .section-MarketingResearch .main-Title strong{
     color: #00c300;
 }
@@ -127,9 +125,6 @@ button{
     color: #00c300;
     font-weight: 900;
     word-spacing: 1px;
-}
-.section-MarketingResearch .item-List .txt .highlight{
-
 }
 .section-MarketingResearch .item-List .txt p{
     font-size: 22px;
