@@ -291,16 +291,23 @@ button{
 }
 .section-ApplyNow .main-Title h2{
     padding: 30px 0;
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 900;
 }
 .section-ApplyNow .main-Title .note{
-    
+    color: #00c300;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 /* ---------------------------------- */
+/* .section-Form .Form .content-Form{
+
+} */
+
 .section-Form .Form .content-Form li{
     list-style-type: none;
+
 }
 
 /* ----------頁尾選單---------- */
@@ -337,6 +344,10 @@ footer{
 }
 .content-Footer .footer-Social{
     width: 200px;
+}
+.content-Footer .footer-Social .Follow i{
+    font-size: 30px;
+    padding: 10px;
 }
 .content-Footer .Follow h3{
     color: #fff;

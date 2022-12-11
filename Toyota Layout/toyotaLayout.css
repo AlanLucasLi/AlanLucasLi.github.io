@@ -1,0 +1,224 @@
+img {
+    vertical-align: bottom;
+    width: 100%;
+}
+
+.section-advantage .advantage-body {
+    width: 960px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.section-advantage .advantage-body .item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+
+.section-advantage .advantage-body .item::before {
+    content: '';
+    width: 435px;
+    height: 280px;
+    background: #f4f4f4;
+    position: absolute;
+    top: 135px;
+    right: 0;
+    z-index: 1;
+}
+
+.section-advantage .advantage-body .item:nth-child(even):before {
+    content: '';
+    width: 540px;
+    height: 440px;
+    background: #f4f4f4;
+    position: absolute;
+    top: 130px;
+    right: 170px;
+    z-index: 1;
+}
+
+.section-advantage .advantage-body .item .text-card {
+    color: #fff;
+    width: 354px;
+    background-color: #000;
+    background-size: 15px;
+    position: absolute;
+    left: 0;
+    z-index: 3;
+}
+
+.section-advantage .advantage-body .item:nth-child(even) .text-card {
+    position: absolute;
+    left: auto;
+    right: 0;
+}
+
+.section-advantage .advantage-body .item .text-card .card-title {
+    background-color: #bb0404;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 17.5px 0;
+}
+
+.section-advantage .advantage-body .item:nth-child(even) .text-card .card-title {
+    flex-direction: row-reverse;
+}
+
+.section-advantage .advantage-body .item .text-card h2 {
+    font-size: 52px;
+    font-weight: lighter;
+    padding-left: 30px;
+}
+
+.section-advantage .advantage-body .item:nth-child(even) .text-card h2 {
+    padding-right: 30px;
+    padding-left: 0;
+
+}
+
+.section-advantage .advantage-body .item .text-card span {
+    font-size: 110px;
+    writing-mode: vertical-lr;
+    line-height: 90px;
+    font-weight: 100;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-stretch: condensed;
+}
+
+.section-advantage .advantage-body .item .text-card .card-content {
+    padding: 20px;
+}
+
+.section-advantage .advantage-body .item .text-card h3 {
+    font-size: 24px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    font-weight: 800;
+}
+
+.section-advantage .advantage-body .item .text-card p {
+    font-size: 19px;
+    font-weight: 100;
+    line-height: 1.3;
+    padding-bottom: 30px;
+    text-align: justify;
+    letter-spacing: 4px;
+}
+
+.section-advantage .advantage-body .item .pic {
+    width: 72%;
+    margin-left: auto;
+    padding: 135px 0 0;
+    margin-right: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-advantage .advantage-body .item:nth-child(even) .pic {
+    width: 72%;
+    margin-left: 5px;
+    padding: 135px 0 0;
+    margin-right: 0;
+}
+
+.section-advantage .advantage-body .item .pic .play-icon {
+    position: absolute;
+    right: -10px;
+    top: 60%;
+    font-size: 30px;
+    background: #bb0404;
+    padding: 4px 20px;
+    z-index: 9;
+    color: #fff;
+    cursor: pointer;
+}
+
+.section-advantage .advantage-body .item:nth-child(even) .pic .play-icon {
+    position: absolute;
+    right: auto;
+    left: -5px;
+}
+
+.section-advantage .advantage-body .item .pic img {
+    position: relative;
+    z-index: 3;
+}
+
+.section-advantage .advantage-body .item .text-content {
+    background: #eeeeee;
+    width: 71%;
+    z-index: 5;
+    bottom: 20px;
+    margin-left: 50px;
+    padding: 20px 25px;
+    position: relative;
+    top: -30px;
+}
+
+.section-advantage .advantage-body .item:nth-child(even) .text-content {
+    right: 0;
+    margin-left: auto;
+}
+
+.section-advantage .advantage-body .text-content .content-title {
+    color: #bb0404;
+    position: relative;
+    font-weight: bolder;
+    font-size: 18px;
+    padding-right: 8px;
+}
+
+.section-advantage .advantage-body .text-content .content-title-box {
+    display: flex;
+    align-items: center;
+}
+
+.section-advantage .advantage-body .text-content .line {
+    flex-grow: 1;
+    height: 1px;
+    background: #bb0404;
+}
+
+
+
+.section-advantage .advantage-body .text-content h3 {
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    background: #000;
+    padding: 5px 10px 3px;
+    font-weight: lighter;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+.section-advantage .advantage-body .text-content .dot {
+    position: relative;
+    color: #666;
+    line-height: 1.2;
+    font-size: 16px;
+    margin-left: 31px;
+}
+
+.section-advantage .advantage-body .text-content .dot::before {
+    content: "▪";
+    color: #bb0404;
+    font-weight: bold;
+    display: inline-block;
+    width: 11px;
+    margin-left: -10px;
+}
+
+#first {
+    padding-top: 90px;
+}
+
+#second,
+#third,
+#fourth,
+#fifth {
+    padding-top: 110px;
+    margin-top: -110px;
+}
