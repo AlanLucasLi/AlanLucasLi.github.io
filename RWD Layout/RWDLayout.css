@@ -1,0 +1,105 @@
+.col {
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+.item {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.item .pic {
+    width: 50%;
+}
+
+.item .pic img {
+    width: 100%;
+}
+
+.item .text {
+    padding: 10px;
+    width: 50%;
+}
+
+.item .text h2 {
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .wrap {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        --col-count: 1
+    }
+
+    .col {
+        width: calc(100% / var(--col-count));
+    }
+
+    .item {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .item .pic {
+        width: 100%;
+    }
+
+    .item .text {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .col {
+        --col-count: 3;
+    }
+
+    .item {
+        flex-direction: column;
+    }
+
+    .item .pic {
+        width: 100%;
+    }
+
+    .item .text {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .col {
+        --col-count: 4
+    }
+
+    .col:nth-child(-n+2) {
+        width: 50%;
+    }
+
+    .col:nth-child(-n+2) .item {
+        flex-direction: row;
+    }
+
+    .col:nth-child(n+3) .item {
+        position: relative;
+    }
+
+    .col:nth-child(n+3) .item .pic img {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    .col:nth-child(n+3) .item .text {
+        position: absolute;
+        background-color: #eee8;
+    }
+}
