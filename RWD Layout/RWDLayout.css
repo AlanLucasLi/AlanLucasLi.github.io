@@ -104,8 +104,12 @@
     }
 
     .col:nth-child(n+3) .item .text {
-        position: absolute;
         background-color: #eee8;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        box-sizing: border-box;
+        padding: 0 10px;
         opacity: 0;
     }
 
