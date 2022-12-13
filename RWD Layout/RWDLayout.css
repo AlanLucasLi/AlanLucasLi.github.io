@@ -1,6 +1,6 @@
 .col {
     box-sizing: border-box;
-    padding: 10px 15px;
+    padding: 10px 10px;
 }
 
 .item {
@@ -9,7 +9,7 @@
 
 .item .pic {
     width: 50%;
-    margin-right: 30px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
 }
@@ -90,6 +90,10 @@
         flex-direction: row;
     }
 
+    .col:nth-child(-n+2) .item .pic {
+        margin-right: 20px;
+    }
+
     .col:nth-child(n+3) .item {
         position: relative;
     }
@@ -102,5 +106,10 @@
     .col:nth-child(n+3) .item .text {
         position: absolute;
         background-color: #eee8;
+        opacity: 0;
+    }
+
+    .col:nth-child(n+3):hover .item .text {
+        opacity: 1;
     }
 }
