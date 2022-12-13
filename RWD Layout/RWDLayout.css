@@ -1,18 +1,17 @@
 .col {
     box-sizing: border-box;
-    padding: 0 15px;
+    padding: 10px 15px;
 }
 
 .item {
-    margin-bottom: 15px;
     display: flex;
-    justify-content: center;
-    align-content: center;
 }
 
 .item .pic {
     width: 50%;
     margin-right: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .item .pic img {
