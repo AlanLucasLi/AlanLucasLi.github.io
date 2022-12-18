@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="./rwd list layout.css">
+</head>
+
+<body>
+
+    <input type="checkbox" id="menu">
+    <header class="main-header">
+        <div class="header-nav">
+            <a href="#" class="logo">
+                <img src="https://picsum.photos/100/60/?random=10">
+            </a>
+            <label  class="hamburger" for="menu">
+                <span></span>
+            </label>
+            <nav class="nav-bar">
+                <ul class="main-nav">
+                    <li class="first-nav dropdown">
+                        <a href="#">Link</a>
+                        <label  class="btn-arrow" for="second1"><span></span></label>
+                        <input type="checkbox" id="second1" name="second-dropdown">
+
+                        <!-- 第二層 -->
+                        <ul class="dropdown-item">
+                            <li><a href="#">Second</a></li>
+                            <li><a href="#">Second</a></li>
+                        </ul>
+                    </li>
+                    <li class="first-nav dropdown">
+                        <a href="#">Link</a>
+                        <label class="btn-arrow" for="second2"><span></span></label>
+                        <input type="checkbox" id="second2" name="second-dropdown">
+
+                        <!-- 第二層 -->
+                        <ul class="dropdown-item">
+                            <li class="second-nav">
+                                <a class="second-link" href="#">Second</a>
+                                <label class="btn-arrow2" for="third1"><span></span></label>
+                                <input type="checkbox" id="third1" name="third-dropdown">
+
+                                <!-- 第三層 -->
+                                <ul class="second-dropdown-item">
+                                    <li><a href="#">Third</a></li>
+                                    <li><a href="#">Third</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="#">Second</a></li>
+                            <li><a href="#">Second</a></li>
+                        </ul>
+                    </li>
+                    <li class="first-nav dropdown">
+                        <a href="#">Link</a>
+                        <label  class="btn-arrow" for="second3"><span></span></label>
+                        <input type="checkbox" id="second3" name="second-dropdown">
+
+                        <!-- 第二層 -->
+                        <ul class="dropdown-item">
+                            <li><a href="#">Second</a></li>
+                            <li><a href="#">Second</a></li>
+                        </ul>
+                    </li>
+                    </li class="dropdown">
+                    <li class="first-nav"><a href="#">Link</a>
+                    <li class="first-nav"><a href="#">Link</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+
+</html>
