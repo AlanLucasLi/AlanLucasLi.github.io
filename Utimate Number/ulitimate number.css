@@ -1,0 +1,79 @@
+.main {
+    width: 500px;
+    margin: 20px auto;
+    padding: 0 0 20px;
+    border: 1px solid #FFC1E0;
+    border-radius: 5px;
+    background-color: #FFC1E0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.main-input {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+h1{
+    font-size: 50px;
+    padding: 10px 0;
+}
+
+.input-range{
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.range-display{
+    padding-left: 5px;
+}
+
+.input-numbers {
+    font-size: 30px;
+    padding:20px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.main-btn-function button {
+    margin: 20px 20px;
+    padding: 0 30px;
+    font-size: 30px;
+    color: #D2E9FF;
+    border: 1px solid #000;
+    background-color: #000;
+    border-radius: 20%;
+}
+
+.main-btn-function button:hover {
+    border: 1px solid #FF77FF;
+    background-color: #FF77FF;
+}
+
+.main-btn-numbers {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 60px 60px 60px 60px 60px;
+    grid-template-rows:  60px 60px;
+
+}
+
+.btn-number{
+    font-size: 30px;
+    color: #D2E9FF;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.btn-number:hover{
+    border: 1px solid #FF77FF;
+    background-color: #FF77FF;
+}
