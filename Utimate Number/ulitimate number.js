@@ -25,7 +25,7 @@ enter_btn.addEventListener('click', enterNumber);
 
 
 
-//#region 函式
+//函式
 //產生隨機亂數
 function RandomNum(min, max) {
     min = Math.ceil(min);
