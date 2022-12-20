@@ -136,7 +136,7 @@
         line-height: 40px;
     }
 
-    .btn-arrow span, .btn-arrow2 span {
+    .btn-arrow span {
         position: absolute;
         top: 13px;
         right: 5px;
@@ -166,12 +166,12 @@
         background: #ccc;
     }
 
-    #second1:checked +.dropdown-item ul{
+    #second1:checked ~.dropdown-item {
         display: block;
     }
-    .check-arrow:checked+.dropdown-item,
-    .check-arrow:checked+.dropdown-item,
-    .check-arrow:checked+.second-dropdown-item {
+    .check-arrow:checked~.dropdown-item,
+    .check-arrow:checked~.dropdown-item,
+    .check-arrow:checked~.second-dropdown-item {
         display: block;
     }
 

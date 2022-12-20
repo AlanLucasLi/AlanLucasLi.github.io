@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .main-header {
+            width: 100%;
+            position: fixed;
+            background-color: #fff;
+            box-shadow: 5px 1px 0.3rem #00000060;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .logo {
+            padding: 10px;
+        }
+
+        .logo img {
+            vertical-align: middle;
+        }
+
+        .nav-first>a {
+            display: block;
+            padding: 20px;
+        }
+
+        #menu,
+        #arrow1-1,
+        #arrow1-2,
+        #arrow1-3,
+        #arrow2-1 {
+            display: none;
+        }
+
+        .header-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-second>a {
+            position: relative;
+        }
+
+        @media screen and (max-width:767px) {
+            .hamburger {
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-right: 5px;
+            }
+
+            .hamburger span {
+                width: 70%;
+                height: 2px;
+                background-color: #ccc;
+                position: relative;
+            }
+
+            .hamburger span::after,
+            .hamburger span::before {
+                content: '';
+                background-color: #ccc;
+                left: 0;
+                right: 0;
+                height: 2px;
+                transition: all 0.2s ease-in-out;
+                position: absolute;
+            }
+
+            .hamburger span::after {
+                top: -10px;
+            }
+
+            .hamburger span::before {
+                bottom: -10px;
+            }
+
+            .header-nav {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                width: 100%;
+                height: calc(100vh - 40px);
+                top: 100%;
+                left: 0;
+                background: #FFDCB9;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .nav-first a,
+            .nav-second .second-link {
+                width: 70%;
+                color: #46A3FF;
+            }
+
+            .nav-first {
+                border-bottom: 1px solid #fff;
+            }
+
+            .nav-first>a:hover {
+                color: #FFAAD5;
+            }
+
+            .dropdown,
+            .nav-second {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+            }
+
+            .nav-second {
+                border-bottom: 1px solid #fff;
+            }
+
+            .arrow-btn {
+                width: 40px;
+                height: 40px;
+                border: 1px solid #ccc;
+                /* line-height: 42px; */
+                border-radius: 50%;
+                color: #ccc;
+                text-align: center;
+                margin-right: 5px;
+            }
+
+            .nav-second .second-link+.arrow-btn {
+                line-height: 40px;
+            }
+
+            .arrow-btn span {
+                position: absolute;
+                top: 13px;
+                right: 0;
+                border-width: 15px;
+                border-style: solid dashed dashed;
+                border-color: transparent transparent transparent #bbb;
+            }
+
+            /* arrow按了旋轉 */
+            .arrow-check:checked~.arrow-btn span {
+                transform: rotate(90deg);
+                transform-origin: 15% 50%;
+                transition: transform .2s ease-in;
+            }
+
+            /* .header-nav a+a {
+                border-top: 1px solid #FFDCB9;
+            } */
+
+            .header-nav a {
+                width: 100%;
+                height: calc(100vh-40px);
+                background: #FFE4CA;
+                display: block;
+                padding: 10px 20px;
+            }
+
+            /* 隱藏下拉選單 */
+            .dropdown-second-item,
+            .dropdown-third-item {
+                width: 100%;
+                padding: 20px 0 20px 30px;
+                border-top: 1px solid #fff;
+                display: none;
+            }
+
+            .dropdown-second-item a,
+            .dropdown-third-item a {
+                /* width: 100%; */
+                padding: 20px 0 20px 30px;
+            }
+
+            .dropdown-second-item {
+                background-color: #FFC78E;
+            }
+
+            .dropdown-third-item {
+                background-color: #FFA042;
+            }
+
+            #arrow1-1:checked~.dropdown-second-item {
+                display: block;
+            }
+
+            #arrow1-2:checked~.dropdown-second-item {
+                display: block;
+            }
+
+            #arrow1-3:checked~.dropdown-second-item {
+                display: block;
+            }
+
+            #arrow2-1:checked~.dropdown-third-item {
+                display: block;
+            }
+
+
+
+            /* 點選hamburger變叉叉 */
+            #menu:checked~.main-header .header-nav {
+                opacity: 1;
+                visibility: visible;
+                left: 0;
+            }
+
+            #menu:checked~.main-header span {
+                background: transparent;
+            }
+
+            #menu:checked~.main-header span::after {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+            #menu:checked~.main-header span::before {
+                transform: rotate(-45deg);
+                top: 0;
+            }
+
+        }
+
+        @media screen and (min-width >=768px) {
+            .main-header {
+                padding: 0 24PX;
+            }
+
+            .header-nav {
+                display: flex;
+            }
+
+            .header-item {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 24PX;
+            }
+
+            .arrow-btn {
+                display: none;
+            }
+
+            .dropdown {
+                position: relative;
+                z-index: 1;
+            }
+
+            .dropdown-second-item {
+                opacity: 0;
+                overflow: hidden;
+                visibility: hidden;
+                position: absolute;
+                top: 56px;
+                z-index: -1;
+                padding: 20px 0;
+                border: 1px solid #ddd;
+                background-color: #fff;
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" id="menu">
+    <header class="main-header">
+        <div class="header-item">
+            <a href="#" class="logo">
+                <img src="https://picsum.photos/100/60/?random=10" alt="">
+            </a>
+            <label class="hamburger" for="menu">
+                <span></span>
+            </label>
+            <nav class="header-nav">
+                <ul class="main-nav">
+                    <li class="nav-first dropdown">
+                        <a href="#">選單第一層</a>
+                        <input type="checkbox" class="arrow-check" id="arrow1-1" name="dropdown-second">
+                        <label for="arrow1-1" class="arrow-btn">
+                            <span></span>
+                        </label>
+                        <ul class="dropdown-second-item">
+                            <li><a href="#">選單第二層</a></li>
+                            <li><a href="#">選單第二層</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-first dropdown">
+                        <a href="">選單第一層</a>
+                        <input type="checkbox" class="arrow-check" id="arrow1-2" name="dropdown-second">
+                        <label for="arrow1-2" class="arrow-btn">
+                            <span></span>
+                        </label>
+
+                        <ul class="dropdown-second-item">
+                            <li class="nav-second">
+                                <a href="#" class="second-link">選單第二層</a>
+                                <input type="checkbox" class="arrow-check" id="arrow2-1" name="dropdown-second">
+                                <label for="arrow2-1" class="arrow-btn">
+                                    <span></span>
+                                </label>
+
+                                <ul class="dropdown-third-item">
+                                    <li><a href="#">選單第三層</a></li>
+                                    <li><a href="#">選單第三層</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">選單第二層</a></li>
+                            <li><a href="">選單第二層</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-first dropdown">
+                        <a href="">選單第一層</a>
+                        <input type="checkbox" class="arrow-check" id="arrow1-3" name="dropdown-second">
+                        <label for="arrow1-3" class="arrow-btn">
+                            <span></span>
+                        </label>
+
+                        <ul class="dropdown-second-item">
+                            <li><a href="">選單第二層</a></li>
+                            <li><a href="">選單第二層</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-first"><a href="">選單第一層</a></li>
+                    <li class="nav-first"><a href="">選單第一層</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+
+</html>
