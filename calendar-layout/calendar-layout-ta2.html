@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/44b0cfe14b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Celendar</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: 'Baloo Paaji 2', cursive;
+        }
+
+        body {
+            background: linear-gradient(to right, #00c4ff, #00ff64e0);
+        }
+
+        .celendar {
+            width: 960px;
+            height: 960px;
+        }
+
+        .celendar .title-celendar {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+        }
+
+        .celendar .title-celendar h2 {
+            font-size: 80px;
+            color: antiquewhite;
+            font-weight: bold;
+        }
+
+        .celendar .title-celendar h4 {
+            font-size: 40px;
+            color: antiquewhite;
+            font-weight: 100;
+        }
+
+        .celendar .title-celendar .btn-left {
+            font-size: 25px;
+            color: antiquewhite;
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
+
+        .celendar .title-celendar .btn-right {
+            font-size: 25px;
+            color: antiquewhite;
+            position: absolute;
+            top: 50%;
+            right: 0;
+        }
+
+        .celendar .body-celendar {
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            width: 100%;
+            /* height: 80%; */
+        }
+
+        table thead tr {
+            width: 100%;
+        }
+
+        table thead tr>th {
+            width: 14.2857142857143%;
+            font-size: 35px;
+            border: 1px solid antiquewhite;
+        }
+
+        table tbody tr>th {
+            width: 14.2857142857143%;
+
+        }
+
+        table tbody tr td {
+            height: 133px;
+            vertical-align: top;
+            text-align: center;
+            /* padding: 10px; */
+            font-size: 20px;
+            border: 1px solid antiquewhite;
+            overflow: hidden;
+        }
+
+        table tbody tr td ul li {
+            list-style-type: square;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        table tbody tr td ul li span {
+            font-size: 10px;
+            vertical-align: middle;
+            color: white;
+        }
+
+        table tbody tr td:hover {
+            cursor: pointer;
+            font-weight: bolder;
+            background-color: rgba(255, 255, 255, .3)
+                /* background-color: rgba(147, 175, 240, .5); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="celendar">
+                <div class="title-celendar">
+                    <h2 id="month">Month</h2>
+                    <h4 id="year">Year</h4>
+                    <button class="btn btn-left" value="-1" onclick="ChangeMonth(this.value)">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-right" value="+1" onclick="ChangeMonth(this.value)">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="body-celendar h-100">
+                    <table>
+                        <thead class="week text-center">
+                            <tr class="border">
+                                <th scope="col">Sum</th>
+                                <th scope="col">Mon</th>
+                                <th scope="col">Tue</th>
+                                <th scope="col">Wed</th>
+                                <th scope="col">Thu</th>
+                                <th scope="col">Fri</th>
+                                <th scope="col">Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="first">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="scheduleForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalCenterTitle">...</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 my-1">
+                                <input class="form-control border-0" type="text" placeholder="Add title and time"
+                                    id="schedule">
+                            </div>
+                            <div class="col-6 my-1">
+                                <label class="form-control border-0" for="startDT">
+                                    From:
+                                    <input class="border-0 mx-1" type="time" id="startDT">
+                                </label>
+                            </div>
+                            <div class="col-6 my-1">
+                                <label class="form-control border-0" for="endDT">
+                                    To:
+                                    <input class="border-0 mx-1" type="time" id="endDT">
+                                </label>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-control border-0" for="remark">remark</label>
+                            </div>
+                            <div class="cole-4">
+                                <select name="selectEvent" id="selectEvent" class="form border">
+                                    <option value="Event">
+                                        <span>Event</span>
+                                    </option>
+                                    <option value="Task">
+                                        <span>Task</span>
+                                    </option>
+                                    <option value="Reminder">
+                                        <span>Reminder</span>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <input type="color" class="form-control border-0" value="#6610f2" id="remarkColor">
+                            </div>
+                            <div class="col-12 my-1">
+                                <input class="form-control border" type="text" id="remarkTxt">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="save" type="button" class="btn btn-primary" onclick="SaveSchedule()">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="schduleDetail" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div id="schduleDetailWrap" class="col-12">
+
+                                <!-- <div class="item border">
+                <h5>8978855454</h5>
+                <p>時間5555555555555</p>
+                <labl>event</labl>
+                <p>Lorem ipsum dolor sit amet consectetur  Ratione qui quidem unde perferendis reiciendis.</p>
+                <button class="btn btn-outline-danger">xx</button>
+                <button class="btn btn-outline-info ml-auto">x</button>
+              </div> 這裡有bug，唉...-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="SwitchModal()">Add Schdule</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+    <script>
+        const monthName = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+        let printMonth = document.getElementById('month');
+        let printYear = document.getElementById('year');
+        let celender = new Date();
+        let curMonth = celender.getMonth();
+        let curYear = celender.getFullYear();
+        let dayBlock = document.querySelectorAll('table tbody tr td');
+
+        CelendarYearMonth(curYear, curMonth); //起始畫面年&月
+
+        //新增事件
+        dayBlock.forEach((el) => {
+            el.addEventListener('click', (e) => {
+                ShowAllSchedule(el);
+                e.stopPropagation();
+            });
+        });
+
+        function CelendarYearMonth(year, month) {
+            curMonth = month;
+            curYear = year;
+            printMonth.innerText = monthName[month];
+            printYear.innerText = year;
+        }
+
+        function ChangeMonth(input) {
+            console.log(input);
+            CalculatorMonthAndYear(input);
+            printMonth.innerText = monthName[curMonth];
+            printYear.innerText = curYear;
+            ClearBlock();
+            SetEveryDays(curYear, curMonth);
+        }
+
+        function CalculatorMonthAndYear(operator) {
+            curMonth = eval(`${curMonth}${operator}`);
+            if (curMonth < 0) {
+                curMonth = 11;
+                curYear = curYear - 1;
+            }
+            if (curMonth > 11) {
+                curMonth = 0;
+                curYear = curYear + 1;
+            }
+        }
+
+        function FirstDayOfWeekOnMonth(year, month) {
+            var tmpDate = new Date(year, month, 1);
+            return (tmpDate.getDay());
+        }
+
+
+        function SetEveryDays(year, month) {
+            let startIndex = FirstDayOfWeekOnMonth(year, month);
+            let thisMonthDays = new Date(year, month + 1, 0).getDate();
+            let lastMonthDays = new Date(year, month, 0).getDate();
+            //長當月份的日子
+            for (let i = 0; i < thisMonthDays; i++) {
+                if (celender.getMonth() == curMonth && celender.getFullYear() == curYear && i + 1 == celender.getDate()) {
+                    dayBlock[startIndex + i].setAttribute('style', 'background-color: rgba(147, 175, 240, .5) ; color : #343a40');
+                } else {
+                    dayBlock[startIndex + i].setAttribute('style', 'color : #343a40');
+                }
+                dayBlock[startIndex + i].setAttribute('targetDate', `${year},${month},${i + 1}`);
+                dayBlock[startIndex + i].innerText = i + 1;
+            }
+            //上個月最後幾天
+            for (let j = 0; j < startIndex; j++) {
+                dayBlock[j].setAttribute('style', 'color : #1d6ab7');
+
+                if (month - 1 < 0) {
+                    dayBlock[j].setAttribute('targetDate', `${year - 1},${11},${lastMonthDays - (startIndex - 1) + j}`);
+                }
+                else {
+                    dayBlock[j].setAttribute('targetDate', `${year},${month - 1},${lastMonthDays - (startIndex - 1) + j}`);
+                }
+                dayBlock[j].innerText = lastMonthDays - (startIndex - 1) + j;
+            }
+            //下個月前幾天
+            for (let k = 0; k < (dayBlock.length - thisMonthDays - startIndex); k++) {
+                dayBlock[startIndex + thisMonthDays + k].setAttribute('style', 'color : #1d6ab7');
+                if (month + 1 > 11) {
+                    dayBlock[startIndex + thisMonthDays + k].setAttribute('targetDate', `${year + 1},${0},${k + 1}`);
+                }
+                else {
+                    dayBlock[startIndex + thisMonthDays + k].setAttribute('targetDate', `${year},${month + 1},${k + 1}`);
+                }
+                dayBlock[startIndex + thisMonthDays + k].innerText = k + 1;
+            }
+            AddBlockList();
+        }
+
+        function ClearBlock() {
+            dayBlock.forEach((item) => {
+                item.innerHTML = '';
+            })
+            $('#schedule')[0].value = '';
+            $('#startDT')[0].value = '';
+            $('#endDT')[0].value = '';
+            $('#selectEvent')[0].value = '';
+            $('#remarkColor')[0].value = '#6610f2';
+            $('#remarkTxt')[0].value = '';
+        }
+
+        //顯示行程
+        function ShowAllSchedule(el) {
+            let titleDay = (el.getAttributeNode('targetDate').value);//把變數拿出來
+            let centerTitle = $('#staticBackdropLabel')[0];
+            centerTitle.innerText = `${monthName[titleDay.split(',')[1]]} ${titleDay.split(',')[2]}`
+            centerTitle.setAttribute('targetDate', titleDay)//把變數藏到這裡
+
+            let schduleDetailWrap = document.getElementById('schduleDetailWrap');
+            schduleDetailWrap.innerHTML = '';
+            if (localStorage.getItem(titleDay) == null) {
+                $('#schduleDetail').modal('show');
+                return
+            } else {
+                $('#schduleDetail').modal('show');
+                let schduleObj = JSON.parse(localStorage.getItem(titleDay));
+                console.log(schduleObj);
+                schduleObj.forEach((item, index) => {
+                    console.log(item);
+                    let items = document.createElement('div');
+                    let title = document.createElement('h5');
+                    let spanDT = document.createElement('p');
+                    let lable = document.createElement('lable');
+                    let spanTxt = document.createElement('p');
+                    let btns = document.createElement('div');
+                    let edit = document.createElement('button');
+                    let del = document.createElement('button');
+
+                    items.classList.add('item', 'border', 'my-2', 'p-2');
+                    btns.classList.add('d-flex', 'p-1');
+                    edit.classList.add('btn', 'btn-outline-info', 'ml-auto', 'mr-2');
+                    del.classList.add('btn', 'btn-outline-danger');
+                    spanTxt.setAttribute('style', 'word-break: break-all');
+                    edit.setAttribute('pk', `${titleDay}`);
+                    edit.setAttribute('indexKey', `${index}`);
+                    del.setAttribute('pk', `${titleDay}`);
+                    del.setAttribute('indexKey', `${index}`);
+
+                    title.innerText = `#${index + 1}: ${item.title}`;
+                    spanDT.innerText = `時間：${item.startDT}~${item.endDT}`;
+                    lable.innerText = item.remark;
+                    spanTxt.innerText = item.remarkTxt
+                    edit.innerText = 'Edit';
+                    del.innerText = 'Del';
+
+                    del.addEventListener('click', (e) => {
+                        DelSchedule(event);
+                        e.stopPropagation();
+                    });
+
+                    edit.addEventListener('click', (e) => {
+                        EditSchedule(event);
+                        e.stopPropagation;
+                    })
+
+                    items.appendChild(title);
+                    items.appendChild(spanDT);
+                    items.appendChild(lable);
+                    items.appendChild(spanTxt);
+                    items.appendChild(btns);
+                    btns.appendChild(edit);
+                    btns.appendChild(del);
+                    schduleDetailWrap.appendChild(items);
+                })
+            }
+        }
+
+        function SaveSchedule() {
+            let primaryKey = $('#staticBackdropLabel')[0].attributes.targetdate.value;
+            let scheduleValue = {
+                title: `${$('#schedule')[0].value}`,
+                startDT: `${$('#startDT')[0].value}`,
+                endDT: `${$('#endDT')[0].value}`,
+                remark: `${$('#selectEvent')[0].value}`,
+                color: `${$('#remarkColor')[0].value}`,
+                remarkTxt: `${$('#remarkTxt')[0].value}`
+            };
+
+            if (localStorage.getItem(primaryKey) == null) {
+                let schduleObj = [];
+                schduleObj.push(scheduleValue);
+                SaveToStorage(primaryKey, schduleObj);
+            } else {
+                let schduleObj = JSON.parse(localStorage.getItem(primaryKey));
+                schduleObj.push(scheduleValue);
+                SaveToStorage(primaryKey, schduleObj)
+            }
+            $('#scheduleForm').modal('hide');
+            ClearBlock();
+            SetEveryDays(curYear, curMonth);
+        }
+
+        function SaveToStorage(key, value) {
+            localStorage.setItem(key, JSON.stringify(value));
+        }
+
+        function AddBlockList() {
+            dayBlock.forEach((element) => {
+                let keyName = element.getAttribute('targetdate');
+                let stroageData = localStorage.getItem(keyName);
+                let ul = document.createElement('ul');
+                // console.log(stroageData);
+                if (stroageData != null) {
+                    let stroageArray = JSON.parse(stroageData)
+                    for (let index in stroageArray) {
+                        let subItem = document.createElement('li');
+                        subItem.setAttribute('style', `color:${stroageArray[index].color}`)
+                        if (index < 3) {
+                            subItem.innerHTML = `<span>${stroageArray[index].title}</span>`;
+                            ul.appendChild(subItem)
+                            element.appendChild(ul);
+                        } else {
+                            subItem.innerHTML = `<span>More...</span>`;
+                            ul.appendChild(subItem)
+                            element.appendChild(ul);
+                            break;
+                        }
+                    }
+                }
+            })
+        }
+
+        function SwitchModal() {
+            $('#schduleDetail').modal('hide');
+            let titleDay = $('#staticBackdropLabel')[0].attributes.targetdate.value;//把變數拿出來
+            let centerTitle = $('#ModalCenterTitle')[0];
+            centerTitle.innerText = `${monthName[titleDay.split(',')[1]]} ${titleDay.split(',')[2]}`
+            centerTitle.setAttribute('targetDate', titleDay)//把變數藏到這裡
+            $('#scheduleForm').modal('show');
+        }
+
+        //往前進一點比停在原地好...寫吧
+
+        function EditSchedule(event) {
+            let PK = (event.target.getAttribute('pk'));
+            let indexKey = (event.target.getAttribute('indexKey'));
+            let schduleObj = JSON.parse(localStorage.getItem(PK));
+            let centerTitle = $('#ModalCenterTitle')[0];
+            centerTitle.innerText = `${monthName[PK.split(',')[1]]} ${PK.split(',')[2]}`;
+            let editData = schduleObj[indexKey];
+            $('#schedule')[0].value = editData.title;
+            $('#startDT')[0].value = editData.startDT;
+            $('#endDT')[0].value = editData.endDT;
+            $('#selectEvent')[0].value = editData.remark;
+            $('#remarkColor')[0].value = editData.color;
+            $('#remarkTxt')[0].value = editData.remarkTxt;
+            schduleObj.splice(indexKey, 1);
+            SaveToStorage(PK, schduleObj);
+            $('#schduleDetail').modal('hide');
+            $('#scheduleForm').modal('show');
+        }
+
+        function DelSchedule(event) {
+            let PK = (event.target.getAttribute('pk'));
+            let indexKey = (event.target.getAttribute('indexKey'));
+            let schduleObj = JSON.parse(localStorage.getItem(PK));
+            schduleObj.splice(indexKey, 1);
+            SaveToStorage(PK, schduleObj);
+            $('#schduleDetail').modal('hide');
+            ClearBlock();
+            SetEveryDays(curYear, curMonth);
+        }
+
+        window.onload = SetEveryDays(curYear, curMonth);
+    </script>
+
+</body>
+
+</html>

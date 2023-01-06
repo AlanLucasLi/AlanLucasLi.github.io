@@ -52,10 +52,10 @@
         let startBtn = document.querySelector('#startGame');
 
         let numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        createRandom(numberArray);
-        let answer4 = numberArray.slice(0, 4);
-        let answerString = answer4.toString();
-        let answer = answerString.replace(/,/g, '');
+        createRandoms(numberArray);
+        let fourNumbers = numberArray.slice(0, 4);
+        let fourNumbersString = fourNumbers.toString();
+        let answer = fourNumbersString.replace(/,/g, '');
 
 
         window.onload = function () {
@@ -66,7 +66,7 @@
 
 
         //製造亂數
-        function createRandom(arr) {
+        function createRandoms(arr) {
             for (var i = arr.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1)); //random index
                 [arr[i], arr[j]] = [arr[j], arr[i]]; // swap
@@ -106,10 +106,10 @@
                 let a = 0;
                 let b = 0;
                 for (var i = 0; i < 4; i++) {
-                    if (numInputArray[i] == answer4[i]) {
+                    if (numInputArray[i] == fourNumbers[i]) {
                         a++;
                     }
-                    else if (answer4[i] == numInputArray[0] || answer4[i] == numInputArray[1] || answer4[i] == numInputArray[2] || answer4[i] == numInputArray[3]) {
+                    else if (fourNumbers[i] == numInputArray[0] || fourNumbers[i] == numInputArray[1] || fourNumbers[i] == numInputArray[2] || fourNumbers[i] == numInputArray[3]) {
                         b++;
                     }
                 }

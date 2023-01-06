@@ -45,7 +45,7 @@
             let trun = e.target.dataset.trun;
             time = setInterval(function () {
                 turnAround(trun);
-            }, 100);
+            }, 60);
         }
 
         function turnAround(trun) {
