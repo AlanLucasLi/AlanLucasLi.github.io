@@ -38,6 +38,7 @@
         let startBtn = document.querySelector('#startGame');
 
         let numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        fisherYatesShuffle(numberArray);
         let answer4 = numberArray.slice(0, 4);
         let answerString = answer4.toString();
         let answer = answerString.replace(/,/g, '');
@@ -51,7 +52,6 @@
 
 
         //製造亂數
-        fisherYatesShuffle(numberArray);
         function fisherYatesShuffle(arr) {
             for (var i = arr.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1)); //random index
