@@ -58,7 +58,6 @@ function enterNumber(e) {
     }
     else if (num == gusse_num) {
         alert("Good job！恭喜答對！");
-        alert("再玩一次!");
         resetGame();
     }
     display_range.innerText = `${min_num}-${max_num}`;
