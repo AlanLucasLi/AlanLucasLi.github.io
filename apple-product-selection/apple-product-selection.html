@@ -14,9 +14,8 @@
     <div class="container" id="container">
         <div class="row my-3 justify-content-center">
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-                <button type="button" class="btn btn-dark mx-1" id="iphone">iPhone-ProMax</button>
-                <button type="button" class="btn btn-dark mx-1" id="ipad">iPad-Pro</button>
-                <button type="button" class="btn btn-dark mx-1" id="MacBook">MacBook-Pro</button>
+                <button type="button" class="btn btn-info mx-1" id="iphone">iPad10</button>
+                <button type="button" class="btn btn-info mx-1" id="ipad">iPad-Pro</button>
             </div>
         </div>
         <div class="row" id="content">
@@ -61,41 +60,65 @@
     </div>
     <script>
         //資料結構
-        let iphoneProMaxArray = [
-            { hex: '#60576A', hex_text: '深紫色', pic: '/JSHW-ApplePurchase/iphone-14-pro-deeppurple.jfif', storage: '128GB', price: '38900' },
-            { hex: '#60576A', hex_text: '深紫色', pic: '/JSHW-ApplePurchase/iphone-14-pro-deeppurple.jfif', storage: '256GB', price: '42400' },
-            { hex: '#60576A', hex_text: '深紫色', pic: '/JSHW-ApplePurchase/iphone-14-pro-deeppurple.jfif', storage: '512GB', price: '49400' },
-            { hex: '#60576A', hex_text: '深紫色', pic: '/JSHW-ApplePurchase/iphone-14-pro-deeppurple.jfif', storage: '1TB', price: '56400' },
-            { hex: '#F4E8CE', hex_text: '金色', pic: '/JSHW-ApplePurchase/iphone-14-pro-gold.jfif', storage: '128GB', price: '38900' },
-            { hex: '#F4E8CE', hex_text: '金色', pic: '/JSHW-ApplePurchase/iphone-14-pro-gold.jfif', storage: '256GB', price: '42400' },
-            { hex: '#F4E8CE', hex_text: '金色', pic: '/JSHW-ApplePurchase/iphone-14-pro-gold.jfif', storage: '512GB', price: '49400' },
-            { hex: '#F4E8CE', hex_text: '金色', pic: '/JSHW-ApplePurchase/iphone-14-pro-gold.jfif', storage: '1TB', price: '56400' },
-            { hex: '#F1F3F2', hex_text: '銀色', pic: '/JSHW-ApplePurchase/iphone-14-pro-silver.jfif', storage: '128GB', price: '38900' },
-            { hex: '#F1F3F2', hex_text: '銀色', pic: '/JSHW-ApplePurchase/iphone-14-pro-silver.jfif', storage: '256GB', price: '42400' },
-            { hex: '#F1F3F2', hex_text: '銀色', pic: '/JSHW-ApplePurchase/iphone-14-pro-silver.jfif', storage: '512GB', price: '49400' },
-            { hex: '#F1F3F2', hex_text: '銀色', pic: '/JSHW-ApplePurchase/iphone-14-pro-silver.jfif', storage: '1TB', price: '56400' },
-            { hex: '#4F4E4C', hex_text: '太空黑色', pic: '/JSHW-ApplePurchase/iphone-14-pro-spaceblack.jfif', storage: '128GB', price: '38900' },
-            { hex: '#4F4E4C', hex_text: '太空黑色', pic: '/JSHW-ApplePurchase/iphone-14-pro-spaceblack.jfif', storage: '256GB', price: '42400' },
-            { hex: '#4F4E4C', hex_text: '太空黑色', pic: '/JSHW-ApplePurchase/iphone-14-pro-spaceblack.jfif', storage: '512GB', price: '49400' },
-            { hex: '#4F4E4C', hex_text: '太空黑色', pic: '/JSHW-ApplePurchase/iphone-14-pro-spaceblack.jfif', storage: '1TB', price: '56400' },
+        let iPadArray = [
+            { hex: '#6E86A4', hex_text: '藍色', pic: './img/ipad-10th-gen-storage-select-202212-blue.jfif', storage: '64GB', connection: 'Wi-Fi', price: '14900' },
+            { hex: '#6E86A4', hex_text: '藍色', pic: './img/ipad-10th-gen-storage-select-202212-blue.jfif', storage: '64GB', connection: 'Wi-Fi + 行動網路', price: '19900' },
+            { hex: '#6E86A4', hex_text: '藍色', pic: './img/ipad-10th-gen-storage-select-202212-blue.jfif', storage: '256GB', connection: 'Wi-Fi', price: '19900' },
+            { hex: '#6E86A4', hex_text: '藍色', pic: './img/ipad-10th-gen-storage-select-202212-blue.jfif', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '24900' },
+            { hex: '#DE6D7D', hex_text: '粉紅色', pic: './img/ipad-10th-gen-finish-select-202212-pink.jfif', storage: '64GB', connection: 'Wi-Fi', price: '14900' },
+            { hex: '#DE6D7D', hex_text: '粉紅色', pic: './img/ipad-10th-gen-finish-select-202212-pink.jfif', storage: '64GB', connection: 'Wi-Fi + 行動網路', price: '19900' },
+            { hex: '#DE6D7D', hex_text: '粉紅色', pic: './img/ipad-10th-gen-finish-select-202212-pink.jfif', storage: '256GB', connection: 'Wi-Fi', price: '19900' },
+            { hex: '#DE6D7D', hex_text: '粉紅色', pic: './img/ipad-10th-gen-finish-select-202212-pink.jfif', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '24900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-10th-gen-finish-select-202212-silver.jfif', storage: '64GB', connection: 'Wi-Fi', price: '14900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-10th-gen-finish-select-202212-silver.jfif', storage: '64GB', connection: 'Wi-Fi + 行動網路', price: '19900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-10th-gen-finish-select-202212-silver.jfif', storage: '256GB', connection: 'Wi-Fi', price: '19900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-10th-gen-finish-select-202212-silver.jfif', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '24900' },
+            { hex: '#F0D964', hex_text: '黃色', pic: './img/ipad-10th-gen-finish-select-202212-yellow.jfif', storage: '64GB', connection: 'Wi-Fi', price: '14900' },
+            { hex: '#F0D964', hex_text: '黃色', pic: './img/ipad-10th-gen-finish-select-202212-yellow.jfif', storage: '64GB', connection: 'Wi-Fi + 行動網路', price: '19900' },
+            { hex: '#F0D964', hex_text: '黃色', pic: './img/ipad-10th-gen-finish-select-202212-yellow.jfif', storage: '256GB', connection: 'Wi-Fi', price: '19900' },
+            { hex: '#F0D964', hex_text: '黃色', pic: './img/ipad-10th-gen-finish-select-202212-yellow.jfif', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '24900' },
         ];
         let iPadProArray = [
-            { hex: '#6F6D72', hex_text: '太空灰色', pic: '/JSHW-ApplePurchase/ipad-pro-space-gray.jfif', storage: '128GB', price: '27900' },
-            { hex: '#6F6D72', hex_text: '太空灰色', pic: '/JSHW-ApplePurchase/ipad-pro-space-gray.jfif', storage: '256GB', price: '31400' },
-            { hex: '#6F6D72', hex_text: '太空灰色', pic: '/JSHW-ApplePurchase/ipad-pro-space-gray.jfif', storage: '512GB', price: '38400' },
-            { hex: '#6F6D72', hex_text: '太空灰色', pic: '/JSHW-ApplePurchase/ipad-pro-space-gray.jfif', storage: '1TB', price: '52400' },
-            { hex: '#E3E4E5', hex_text: '銀色', pic: '/JSHW-ApplePurchase/ipad-pro-silver.jfif', storage: '128GB', price: '27900' },
-            { hex: '#E3E4E5', hex_text: '銀色', pic: '/JSHW-ApplePurchase/ipad-pro-silver.jfif', storage: '256GB', price: '31400' },
-            { hex: '#E3E4E5', hex_text: '銀色', pic: '/JSHW-ApplePurchase/ipad-pro-silver.jfif', storage: '512GB', price: '38400' },
-            { hex: '#E3E4E5', hex_text: '銀色', pic: '/JSHW-ApplePurchase/ipad-pro-silver.jfif', storage: '1TB', price: '52400' },
-        ];
-        let MacBookProArray = [
-            { hex: '#AEB2B5', hex_text: '太空灰色', pic: '/JSHW-ApplePurchase/MacPro-spaceGray.jfif', storage: '256GB', price: '74900' },
-            { hex: '#AEB2B5', hex_text: '太空灰色', pic: '/JSHW-ApplePurchase/MacPro-spaceGray.jfif', storage: '512GB', price: '80900' },
-            { hex: '#AEB2B5', hex_text: '太空灰色', pic: '/JSHW-ApplePurchase/MacPro-spaceGray.jfif', storage: '1TB', price: '104900' },
-            { hex: '#E3E4E5', hex_text: '銀色', pic: '/JSHW-ApplePurchase/MacPro-silver.jfif', storage: '256GB', price: '74900' },
-            { hex: '#E3E4E5', hex_text: '銀色', pic: '/JSHW-ApplePurchase/MacPro-silver.jfif', storage: '512GB', price: '80900' },
-            { hex: '#E3E4E5', hex_text: '銀色', pic: '/JSHW-ApplePurchase/MacPro-silver.jfif', storage: '1TB', price: '104900' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '128GB', connection: 'Wi-Fi', price: '27900' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '128GB', connection: 'Wi-Fi + 行動網路', price: '32900' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '256GB', connection: 'Wi-Fi', price: '31400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '36400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '512GB', connection: 'Wi-Fi', price: '38400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '512GB', connection: 'Wi-Fi + 行動網路', price: '43400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '1TB', connection: 'Wi-Fi', price: '52400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '1TB', connection: 'Wi-Fi + 行動網路', price: '57400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '2TB', connection: 'Wi-Fi', price: '66400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-11inch-space-gray-wifi.jfif', model: '11吋顯示器', storage: '2TB', connection: 'Wi-Fi + 行動網路', price: '71400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '128GB', connection: 'Wi-Fi', price: '37900' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '128GB', connection: 'Wi-Fi + 行動網路', price: '42900' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '256GB', connection: 'Wi-Fi', price: '41400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '46400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '512GB', connection: 'Wi-Fi', price: '48400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '512GB', connection: 'Wi-Fi + 行動網路', price: '53400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '1TB', connection: 'Wi-Fi', price: '62400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '1TB', connection: 'Wi-Fi + 行動網路', price: '67650' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '2TB', connection: 'Wi-Fi', price: '76400' },
+            { hex: '#AEB2B5', hex_text: '太空灰色', pic: './img/ipad-pro-finish-select-202212-12-9inch-space-gray-wifi.jfif', model: '12.9吋顯示器', storage: '2TB', connection: 'Wi-Fi + 行動網路', price: '81650' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '128GB', connection: 'Wi-Fi', price: '27900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '128GB', connection: 'Wi-Fi + 行動網路', price: '32900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '256GB', connection: 'Wi-Fi', price: '31400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '36400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '512GB', connection: 'Wi-Fi', price: '38400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '512GB', connection: 'Wi-Fi + 行動網路', price: '43400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '1TB', connection: 'Wi-Fi', price: '52400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '1TB', connection: 'Wi-Fi + 行動網路', price: '57400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '2TB', connection: 'Wi-Fi', price: '66400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-11inch-silver-wifi.jfif', model: '11吋顯示器', storage: '2TB', connection: 'Wi-Fi + 行動網路', price: '71400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '128GB', connection: 'Wi-Fi', price: '37900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '128GB', connection: 'Wi-Fi + 行動網路', price: '42900' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '256GB', connection: 'Wi-Fi', price: '41400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '256GB', connection: 'Wi-Fi + 行動網路', price: '46400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '512GB', connection: 'Wi-Fi', price: '48400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '512GB', connection: 'Wi-Fi + 行動網路', price: '53400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '1TB', connection: 'Wi-Fi', price: '62400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '1TB', connection: 'Wi-Fi + 行動網路', price: '67650' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '2TB', connection: 'Wi-Fi', price: '76400' },
+            { hex: '#E3E4E5', hex_text: '銀色', pic: './img/ipad-pro-finish-select-202212-12-9inch-silver-wifi.jfif', model: '12.9吋顯示器', storage: '2TB', connection: 'Wi-Fi + 行動網路', price: '81650' },
         ];
 
         let galleryPicArray = [
