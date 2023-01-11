@@ -399,9 +399,8 @@
         }
 
         function resetApple() {
-            colorArea.innerHTML = ''
-            
-
+            // colorArea.innerHTML = ''
+            bootstrap.Collapse.getOrCreateInstance(document.querySelector('#panelsStayOpen-color')).show()
             const removeItem = accordionBox.querySelectorAll('.accordion-item')
             console.log(removeItem)
             if (removeItem.length > 1) {

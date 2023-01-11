@@ -77,7 +77,7 @@
         //宣告
         const today = new Date() //今天
         let year = today.getFullYear() //年
-        let month = today.getMonth() //月份 1月是0
+        let month = today.getMonth() //月份 1月是1
 
         let currentIndex
         //DOM
@@ -100,8 +100,16 @@
 
             //這個月第一天禮拜幾?
             let firstDay = new Date(year, month, 1).getDay()
+            //每個月的第一天
+            let firstDate = new Date(year, month, 1).getDate()
             //這個月有幾天?
             let dayOfMonth = new Date(year, month + 1, 0).getDate()
+            //上個月的最後一天，也就是這個月的第0天
+            let lastDayOfLastMonth = new Date(year, month, 0).getDate()
+            //需要顯示多少上個月的日期
+            let preMonthDayCount = firstDay - 1
+            //當月最後一天，需要知道什麼時候算是下個月，下個月的第0天等於本月最後一天
+            let lastDate = new Date(year,month,0).getDate()
 
             let rows = Math.ceil((dayOfMonth + firstDay) / 7)
             let day = 1
@@ -110,9 +118,11 @@
                 let tr = document.createElement('tr')
                 for (let col = 0; col < 7; col++) {
                     let td = document.createElement('td')
+                    //減去上個月的
+                    let date = col - preMonthDayCount 
                     if (row == 0 && col < firstDay) {
-                        //上個月
-                        td.innerText = 'A'
+                        ////上個月的最後一天減去date,他本身就是負的所以該加date
+                        td.innerText = lastDayOfLastMonth + date
                     }
                     else {
                         if (day <= dayOfMonth) {
@@ -150,9 +160,8 @@
                         }
                         else {
                             //下個月
-                            // td.innerText = 'B'
-                            td.innerText = day
-                            day++
+                            td.innerText = firstDate
+                            firstDate++
                         }
                         day++
                     }
