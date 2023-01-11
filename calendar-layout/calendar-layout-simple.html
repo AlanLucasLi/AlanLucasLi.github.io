@@ -7,10 +7,29 @@
     <title>2023 - Calendar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        i {
+            font-size: 50px;
+        }
+
+        #next {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
 
 <body>
-    <h1 class="year-month">0000年 - 00月</h1>
+    <div class="p-3 d-flex justify-content-evenly">
+        <div class="d-flex align-items-center">
+            <i id="prev" class="fa-solid fa-square-caret-left" onclick="previousMonth()"></i>
+        </div>
+        <div>
+            <h1 class="year-month">0000年 - 00月</h1>
+        </div>
+        <div class="d-flex align-items-center">
+            <i id="next" class="fa-solid fa-square-caret-left" onclick="nextMonth()"></i>
+        </div>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -27,8 +46,8 @@
             <!-- 動態渲染日期 -->
         </tbody>
     </table>
-    <button onclick="previousMonth()" class="btn btn-primary">往上月</button>
-    <button onclick="nextMonth()" class="btn btn-primary">往下月</button>
+
+
 
     <!-- 新增行程Modal -->
     <div id="add-modal" class="modal fade" tabindex="-1">
@@ -72,6 +91,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e25bf20403.js" crossorigin="anonymous"></script>
 
     <script>
         //宣告
@@ -108,8 +128,6 @@
             let lastDayOfLastMonth = new Date(year, month, 0).getDate()
             //需要顯示多少上個月的日期
             let preMonthDayCount = firstDay - 1
-            //當月最後一天，需要知道什麼時候算是下個月，下個月的第0天等於本月最後一天
-            let lastDate = new Date(year,month,0).getDate()
 
             let rows = Math.ceil((dayOfMonth + firstDay) / 7)
             let day = 1
@@ -118,10 +136,10 @@
                 let tr = document.createElement('tr')
                 for (let col = 0; col < 7; col++) {
                     let td = document.createElement('td')
-                    //減去上個月的
-                    let date = col - preMonthDayCount 
+                    //減去上個月的，date為負值
+                    let date = col - preMonthDayCount
                     if (row == 0 && col < firstDay) {
-                        ////上個月的最後一天減去date,他本身就是負的所以該加date
+                        //上個月要顯示的日期
                         td.innerText = lastDayOfLastMonth + date
                     }
                     else {
@@ -130,16 +148,16 @@
                             let d = day
                             td.innerText = day
 
-                            if (localStorage.getItem(`${year}-${month+1}-${day}`) != null) {
+                            if (localStorage.getItem(`${year}-${month + 1}-${day}`) != null) {
                                 let ul = document.createElement('ul')
 
-                                let todoList = JSON.parse(localStorage.getItem(`${year}-${month+1}-${day}`))
+                                let todoList = JSON.parse(localStorage.getItem(`${year}-${month + 1}-${day}`))
                                 todoList.forEach((item, index) => {
                                     let li = document.createElement('li')
                                     li.innerText = item.title
 
-                                    li.onclick = function(e) {
-                                        editDateInput.value = `${year}-${month+1}-${d}`
+                                    li.onclick = function (e) {
+                                        editDateInput.value = `${year}-${month + 1}-${d}`
                                         editValueInput.value = item.title
 
                                         currentIndex = index
@@ -147,7 +165,7 @@
                                         bootstrap.Modal.getOrCreateInstance(editModal).show()
                                         e.stopPropagation()
                                     }
-                                    
+
                                     ul.appendChild(li)
                                 })
                                 td.appendChild(ul)
@@ -220,7 +238,7 @@
             let todoItem = editValueInput.value
 
             let todoList = JSON.parse(localStorage.getItem(date))
-            
+
             todoList[currentIndex] = {
                 title: todoItem
             }
