@@ -88,9 +88,23 @@
             display: none;
         }
     </style>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WSW5V2L');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSW5V2L" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div>
         <section class="apple-nav d-flex justify-content-center align-items-center bg-dark">
             <ul class="nav-bar list-unstyled d-flex m-0">
@@ -222,7 +236,7 @@
         window.onload = function () {
             showNavbar()
             selectProduct(appleList[0])
-            
+
         }
 
         //function
@@ -246,16 +260,16 @@
 
         function selectProduct(product) {
             resetApple()
-            
+
             productType.innerText = product.type
             productName.innerText = `購買${product.name}`
 
             productImg.src = product.mainImg
 
             priceTop.innerText = '$0'
-            
+
             // color
-            
+
             product.colorList.forEach((item) => {
                 const div = document.createElement('div')
                 div.classList.add('col-6', 'mb-3')
