@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>小瑪莉JS小遊戲</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+        integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #EFFCFC;
+        }
+
+        img {
+            box-sizing: border-box;
+            width: 100%;
+            transition: all .3s;
+            /*0.3秒後恢復到原本css的狀態 */
+        }
+
+        img.active {
+            border: 2px solid yellow;
+            box-shadow: 0px 0px 25px yellow;
+            transition: all 0s;
+        }
+
+        img.active.last {
+            background-color: yellow;
+        }
+
+        .card-span {
+            background-color: black;
+            color: white;
+            font-size: 5px;
+            font-weight: bold;
+        }
+
+        .card>img {
+            border: none;
+        }
+
+        /* ------- */
+        .slotWrap {
+            width: 800px;
+            margin: 0 auto;
+            background: #bf3600;
+            border-radius: 42px;
+            border: 20px solid #f45c01;
+            padding: 2px;
+            box-shadow: 0 5px 0 2px #c03600;
+            position: relative;
+        }
+
+        .light {
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            animation: 1.5s infinite;
+        }
+
+        .light:nth-child(even) {
+            animation-name: lightEven;
+        }
+
+        @-webkit-keyframes lightEven {
+            0% {
+                background: #ffe212;
+            }
+
+            50% {
+                background: #f45c01;
+            }
+
+            100% {
+                background: #ffe212;
+            }
+        }
+
+        .light:nth-child(odd) {
+            animation-name: lightOdd;
+        }
+
+        @-webkit-keyframes lightOdd {
+            0% {
+                background: #f45c01;
+            }
+
+            50% {
+                background: #ffe212;
+            }
+
+            100% {
+                background: #f45c01;
+            }
+        }
+
+        .light1 {
+            top: -1%;
+            left: -1%;
+        }
+
+        .light2 {
+            top: -3%;
+            left: 10%;
+        }
+
+        .light3 {
+            top: -3%;
+            left: 20%;
+        }
+
+        .light4 {
+            top: -3%;
+            left: 30%;
+        }
+
+        .light5 {
+            top: -3%;
+            left: 40%;
+        }
+
+        .light6 {
+            top: -3%;
+            left: 50%;
+        }
+
+        .light7 {
+            top: -3%;
+            left: 60%;
+        }
+
+        .light8 {
+            top: -3%;
+            left: 70%;
+        }
+
+        .light9 {
+            top: -3%;
+            left: 80%;
+        }
+
+        .light10 {
+            top: -3%;
+            left: 90%;
+        }
+
+        .light11 {
+            top: -1%;
+            right: -1%;
+        }
+
+        .light12 {
+            top: 20%;
+            left: 100.5%;
+        }
+
+        .light13 {
+            top: 40%;
+            left: 100.5%;
+        }
+
+        .light14 {
+            top: 60%;
+            left: 100.5%;
+        }
+
+        .light15 {
+            top: 80%;
+            left: 100.5%;
+        }
+
+        .light16 {
+            bottom: -1%;
+            right: -1%;
+        }
+
+        .light17 {
+            bottom: -3%;
+            left: 90%;
+        }
+
+        .light18 {
+            bottom: -3%;
+            left: 80%;
+        }
+
+        .light19 {
+            bottom: -3%;
+            left: 70%;
+        }
+
+        .light20 {
+            bottom: -3%;
+            left: 60%;
+        }
+
+        .light21 {
+            bottom: -3%;
+            left: 50%;
+        }
+
+        .light22 {
+            bottom: -3%;
+            left: 40%;
+        }
+
+        .light23 {
+            bottom: -3%;
+            left: 30%;
+        }
+
+        .light24 {
+            bottom: -3%;
+            left: 20%;
+        }
+
+        .light25 {
+            bottom: -3%;
+            left: 10%;
+        }
+
+        .light26 {
+            bottom: -1%;
+            left: -1%;
+        }
+
+        .light27 {
+            top: 80%;
+            right: 100.5%;
+        }
+
+        .light28 {
+            top: 60%;
+            right: 100.5%;
+        }
+
+        .light29 {
+            top: 40%;
+            right: 100.5%;
+        }
+
+        .light30 {
+            top: 20%;
+            right: 100.5%;
+        }
+
+        .betWrap{
+            width: 800px;
+            margin: 0 auto;
+            background: #bf3600;
+            border-radius: 42px;
+            border: 20px solid #f45c01;
+            padding: 2px;
+            box-shadow: 0 5px 0 2px #c03600;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid text-center mt-5">
+        <div class="row slotWrap">
+            <div class="col-12">
+                <div class="row mb-4 mt-2 row-with-gap">
+                    <div class="col">
+                        <img id="i1" src="images/icons8-pear-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i2" src="images/icons8-77-filled-50.png">
+                    </div>
+                    <div class="col">
+                        <img id="i3" src="images/icons8-cherry-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i4" src="images/icons8-pear-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i5" src="images/icons8-grapes-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i6" src="images/icons8-watermelon-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i7" src="images/icons8-cherry-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i8" src="images/icons8-pineapple-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i9" src="images/icons8-pear-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i10" src="images/icons8-grapes-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i11" src="images/icons8-cherry-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i12" src="images/icons8-christmas-star-48.png">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <img id="i32" src="images/icons8-peach-48.png">
+                    </div>
+                    <div class="col-10 d-flex justify-content-center">
+                        <div class="col-3">
+                            <button type="button" name="" id="addMoney" class="btn btn-outline-warning btn-block">
+                                投幣
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img id="i13" src="images/icons8-peach-48.png">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <img id="i31" src="images/icons8-pineapple-48.png">
+                    </div>
+                    <div class="col-10">
+                        <form>
+                            <div class="form-row mt-2">
+                                <div class="col input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">得分</span>
+                                    </div>
+                                    <input type="text" class="form-control text-right" id="source" readonly>
+                                </div>
+                                <div class="col input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">總金額</span>
+                                    </div>
+                                    <input type="text" class="form-control text-right" id="totalAmount" readonly>
+                                </div>
+                                <div class="col input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">押注</span>
+                                    </div>
+                                    <input type="text" class="form-control text-right" id="bet" readonly>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <img id="i14" src="images/icons8-cherry-48.png">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <img id="i30" src="images/icons8-cherry-48.png">
+                    </div>
+                    <div class="col-10">
+                        <button type="button" name="" id="start" class="btn btn-warning btn-block">
+                            開始
+                        </button>
+                    </div>
+                    <div class="col">
+                        <img id="i15" src="images/icons8-watermelon-48.png">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <img id="i29" src="images/icons8-grapes-48.png">
+                    </div>
+                    <div class="col-10">
+                    </div>
+                    <div class="col">
+                        <img id="i16" src="images/icons8-pear-48.png">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <img id="i28" src="images/icons8-christmas-star-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i27" src="images/icons8-peach-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i26" src="images/icons8-pear-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i25" src="images/icons8-cherry-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i24" src="images/icons8-pineapple-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i23" src="images/icons8-grapes-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i22" src="images/icons8-watermelon-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i21" src="images/icons8-pear-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i20" src="images/icons8-pineapple-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i19" src="images/icons8-77-filled-50.png">
+                    </div>
+                    <div class="col">
+                        <img id="i18" src="images/icons8-watermelon-48.png">
+                    </div>
+                    <div class="col">
+                        <img id="i17" src="images/icons8-peach-48.png">
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-12 d-flex justify-content-center">
+                <div class="row mb-4 mt-2 ">
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">100</span>
+                            <img class="card-img-top mb-1" src="images/icons8-77-filled-50.png">
+                            <span class="card-span" id="b1">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn1">押</button>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">50</span>
+                            <img class="card-img-top mb-1" src="images/icons8-christmas-star-48.png">
+                            <span class="card-span" id="b2">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn2">押</button>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">30</span>
+                            <img class="card-img-top mb-1" src="images/icons8-pineapple-48.png">
+                            <span class="card-span" id="b3">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn3">押</button>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">30</span>
+                            <img class="card-img-top mb-1" src="images/icons8-watermelon-48.png">
+                            <span class="card-span" id="b4">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn4">押</button>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">30</span>
+                            <img class="card-img-top mb-1" src="images/icons8-grapes-48.png">
+                            <span class="card-span" id="b5">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn5">押</button>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">30</span>
+                            <img class="card-img-top mb-1" src="images/icons8-peach-48.png">
+                            <span class="card-span" id="b6">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn6">押</button>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">20</span>
+                            <img class="card-img-top mb-1" src="images/icons8-pear-48.png">
+                            <span class="card-span" id="b7">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn7">押</button>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-1">
+                            <span class="card-span mb-1 bg-warning">20</span>
+                            <img class="card-img-top mb-1" src="images/icons8-cherry-48.png">
+                            <span class="card-span" id="b8">0</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-block btn-bet" id="btn8">押</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <div class="row mb-2">
+                    <div class="col-4">
+                        <button type="button" class="btn btn-primary btn-block" id="alladd">全加</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-success btn-block" id="allless">全減</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-secondary btn-block" id="alldelete">清除</button>
+                    </div>
+                </div>
+            </div>
+            
+            <span class="clear"></span>
+            <i class="light light1"></i>
+            <i class="light light2"></i>
+            <i class="light light3"></i>
+            <i class="light light4"></i>
+            <i class="light light5"></i>
+            <i class="light light6"></i>
+            <i class="light light7"></i>
+            <i class="light light8"></i>
+            <i class="light light9"></i>
+            <i class="light light10"></i>
+            <i class="light light11"></i>
+            <i class="light light12"></i>
+            <i class="light light13"></i>
+            <i class="light light14"></i>
+            <i class="light light15"></i>
+            <i class="light light16"></i>
+            <i class="light light17"></i>
+            <i class="light light18"></i>
+            <i class="light light19"></i>
+            <i class="light light20"></i>
+            <i class="light light21"></i>
+            <i class="light light22"></i>
+            <i class="light light23"></i>
+            <i class="light light24"></i>
+            <i class="light light25"></i>
+            <i class="light light26"></i>
+            <i class="light light27"></i>
+            <i class="light light28"></i>
+            <i class="light light29"></i>
+            <i class="light light30"></i>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e25bf20403.js" crossorigin="anonymous"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script>
+        //宣告
+        let slotarray = [];
+        let pointTable = [];
+        let currentPosition = 0;
+        let step = 0; //剩餘要走幾步
+        let currentDeg = 0; //目前走到哪一格
+
+        let fruit = {
+            seven: 100,
+            star: 50,
+            pineapple: 30,
+            watermelon: 30,
+            grapes: 30,
+            peach: 30,
+            pear: 20,
+            cherry: 20
+        };
+        NewGame();
+
+        function GetId() {
+            for (var i = 1; i <= 32; i++) {
+                slotarray.push(document.getElementById("i" + i));
+            }
+        }
+
+        function GetValue() {
+            $("#btn1").attr("value", fruit.seven);
+            $("#btn2").attr("value", fruit.star);
+            $("#btn3").attr("value", fruit.pineapple);
+            $("#btn4").attr("value", fruit.watermelon);
+            $("#btn5").attr("value", fruit.grapes);
+            $("#btn6").attr("value", fruit.peach);
+            $("#btn7").attr("value", fruit.pear);
+            $("#btn8").attr("value", fruit.cherry);
+        }
+        document.getElementById("start").onclick = function () {
+            step = slotarray.length * 4 + Math.floor(Math.random() * (slotarray.length - 1));
+            CompleteAmount();
+        };
+
+        function Run() {
+            slotarray[currentPosition].className = "";
+
+            currentPosition++;
+            if (currentPosition >= slotarray.length) {
+                currentPosition = 0;
+            }
+
+            slotarray[currentPosition].className += "active";
+            currentDeg = step;
+            if (--step != 0) {
+                let rad = degreeToRadius(currentDeg - 90);
+                let a = Math.abs(Math.tan(rad));
+                let speed = Math.max(10, Math.min(250, 30 * a));
+                setTimeout(Run, speed);
+
+            } else {
+                slotarray[currentPosition].className += " last";
+                CompleteWinPoint(slotarray[currentPosition].id);
+                // console.log(slotarray[currentPosition].id);
+            }
+
+            function degreeToRadius(deg) {
+                return deg * Math.PI / 180;
+            }
+        }
+
+        function NewGame() {
+            document.getElementById("source").value = 0;
+            document.getElementById("totalAmount").value = 5000;
+            document.getElementById("bet").value = 0;
+            GetId();
+            GetValue();
+            CreatePointTable();
+        }
+
+        $(".btn-bet").on("click", function () {
+            let totalBetAmount = parseFloat($("#bet").val()) + parseFloat(this.value);
+            $("#bet").val(totalBetAmount);
+            let count = parseFloat($("#b" + this.id.split("btn")[1]).text()) + 1;
+            $("#b" + this.id.split("btn")[1]).text(count);
+        });
+
+        $("#alladd").on("click", function () {
+            let totalBetAmount = parseFloat($("#bet").val());
+            $.each($(".btn-bet"), function (index, item) {
+                totalBetAmount += parseFloat(item.value);
+                var count = parseFloat($("#b" + (index + 1)).text()) + 1;
+                $("#b" + (index + 1)).text(count);
+            });
+            $("#bet").val(totalBetAmount);
+        });
+
+        $("#allless").on("click", function () {
+            let totalBetAmount = parseFloat($("#bet").val());
+            let allMoreThanZero = true;
+            $.each($(".card-span:odd"), function (index, item) {
+                if (parseFloat(item.innerText) - 1 < 0) {
+                    alert("已全部歸零");
+                    allMoreThanZero = false;
+                    return false;
+                }
+            });
+            if (allMoreThanZero) {
+                $.each($(".btn-bet"), function (index, item) {
+                    totalBetAmount -= parseFloat(item.value);
+                    var count = parseFloat($("#b" + (index + 1)).text()) - 1;
+                    $("#b" + (index + 1)).text(count);
+                });
+                $("#bet").val(totalBetAmount);
+            }
+        });
+
+        $("#alldelete").on("click", function () {
+            $("#bet").val("0");
+            let n = 1;
+
+            while (true) {
+                let $item = $("#b" + n);
+
+                if ($item.length <= 0) {
+                    break;
+                }
+                $item.text("0");
+                n++;
+            }
+        });
+        function CreatePointTable() {
+            pointTable = [
+                { id: "i1", bid: "b7", value: fruit.pear },
+                { id: "i2", bid: "b1", value: fruit.seven },
+                { id: "i3", bid: "b8", value: fruit.cherry },
+                { id: "i4", bid: "b7", value: fruit.pear },
+                { id: "i5", bid: "b5", value: fruit.grapes },
+                { id: "i6", bid: "b4", value: fruit.watermelon },
+                { id: "i7", bid: "b8", value: fruit.cherry },
+                { id: "i8", bid: "b3", value: fruit.pineapple },
+                { id: "i9", bid: "b7", value: fruit.pear },
+                { id: "i10", bid: "b5", value: fruit.grapes },
+                { id: "i11", bid: "b8", value: fruit.cherry },
+                { id: "i12", bid: "b2", value: fruit.star },
+                { id: "i13", bid: "b6", value: fruit.peach },
+                { id: "i14", bid: "b8", value: fruit.cherry },
+                { id: "i15", bid: "b4", value: fruit.watermelon },
+                { id: "i16", bid: "b7", value: fruit.pear },
+                { id: "i17", bid: "b6", value: fruit.peach },
+                { id: "i18", bid: "b4", value: fruit.watermelon },
+                { id: "i19", bid: "b1", value: fruit.seven },
+                { id: "i20", bid: "b3", value: fruit.pineapple },
+                { id: "i21", bid: "b7", value: fruit.pear },
+                { id: "i22", bid: "b4", value: fruit.watermelon },
+                { id: "i23", bid: "b5", value: fruit.grapes },
+                { id: "i24", bid: "b3", value: fruit.pineapple },
+                { id: "i25", bid: "b8", value: fruit.cherry },
+                { id: "i26", bid: "b7", value: fruit.pear },
+                { id: "i27", bid: "b6", value: fruit.peach },
+                { id: "i28", bid: "b2", value: fruit.star },
+                { id: "i29", bid: "b5", value: fruit.grapes },
+                { id: "i30", bid: "b8", value: fruit.cherry },
+                { id: "i31", bid: "b3", value: fruit.pineapple },
+                { id: "i32", bid: "b6", value: fruit.peach }
+            ];
+        }
+        function CompleteWinPoint(pointId) {
+            let data;
+            $.each(pointTable, function (Index, item) {
+                if (item.id == pointId) {
+                    data = item;
+                    return false;
+                }
+            });
+            let count = $("#" + data.bid).text();
+            let source = $("#source");
+            source.val(parseFloat(source.val()) + parseFloat(count) * data.value * data.value / 10);
+            $("#totalAmount").val(parseFloat($("#totalAmount").val()) + parseFloat(count) * data.value * data.value / 10);
+        }
+
+        function CompleteAmount() {
+            let amount = $("#totalAmount");
+            let bet = $("#bet");
+            let subtraction = parseFloat(amount.val()) - parseFloat(bet.val());
+            if (subtraction < 0) {
+                alert("金額不足，請投幣！");
+            }
+            else if (bet.val() == 0) {
+                alert("押注金額不足，請下注！");
+            }
+            else {
+                amount.val(subtraction);
+                Run();
+            }
+        }
+
+        document.getElementById("addMoney").onclick = function AddMoney(){
+            let totalAmount = parseFloat($("#totalAmount").val())+1000;
+            $("#totalAmount").val(totalAmount);
+        }
+    </script>
+</body>
+
+</html>
