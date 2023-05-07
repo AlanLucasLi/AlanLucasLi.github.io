@@ -196,9 +196,3 @@ function textAreaHeight(event) {
         break;
     }
 }
-// function cloneAdd() {
-//     //怎樣用????
-//     let temp = document.querySelector('template');
-//     let li = temp.querySelector('li').cloneNode(true);
-//     toDoList.appendChild(li);
-// }
