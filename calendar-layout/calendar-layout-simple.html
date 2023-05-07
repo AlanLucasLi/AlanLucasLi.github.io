@@ -15,260 +15,345 @@
         #next {
             transform: rotate(180deg);
         }
+
+        body {
+            display: flex;
+            margin-top: 50px;
+            justify-content: center;
+            background-color: #FFFCFF;
+        }
+
+        button {
+            width: 75px;
+            cursor: pointer;
+            box-shadow: 0px 0px 2px gray;
+            border: none;
+            outline: none;
+            padding: 5px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        #header {
+            padding: 10px;
+            color: #d36c6c;
+            font-size: 26px;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #header button {
+            background-color: #92a1d1;
+        }
+
+        #container {
+            min-width: 1200px;
+        }
+
+        #weekdays {
+            width: 100%;
+            display: flex;
+            color: #247BA0;
+        }
+
+        #weekdays div {
+            width: calc(100% / 7 - 10px);
+            padding: 10px;
+            margin: 5px;
+            box-sizing: border-box;
+        }
+
+        #calendar {
+            width: 100%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .day {
+            width: calc(100% /7 - 10px);
+            padding: 10px;
+            height: 100px;
+            cursor: pointer;
+            box-sizing: border-box;
+            background-color: white;
+            margin: 5px;
+            box-shadow: 0px 0px 3px #CBD4C2;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            overflow-y: auto;
+            /* justify-content: space-between; */
+        }
+
+        /* .day:hover {
+            background-color: #e8faed;
+        }
+
+        .day+#currentDay {
+            background-color: #e8f4fa;
+        } */
+
     </style>
 </head>
 
 <body>
-    <div class="p-3 d-flex justify-content-evenly">
-        <div class="d-flex align-items-center">
-            <i id="prev" class="fa-solid fa-square-caret-left" onclick="previousMonth()"></i>
+    <div id="container">
+        <div id="header">
+            <div>
+                <button id="backButton">
+                    <i id="prev" class="fa-solid fa-square-caret-left" onclick="previousMonth()"></i>
+                </button>
+            </div>
+            <div class="" id="monthDisplay">
+                <h1 class="year-month">0000年 - 00月</h1>
+            </div>
+            <div>
+                <button id="nextButton">
+                    <i id="next" class="fa-solid fa-square-caret-left" onclick="nextMonth()"></i>
+                </button>
+            </div>
         </div>
-        <div>
-            <h1 class="year-month">0000年 - 00月</h1>
-        </div>
-        <div class="d-flex align-items-center">
-            <i id="next" class="fa-solid fa-square-caret-left" onclick="nextMonth()"></i>
-        </div>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>日</th>
-                <th>一</th>
-                <th>二</th>
-                <th>三</th>
-                <th>四</th>
-                <th>五</th>
-                <th>六</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 動態渲染日期 -->
-        </tbody>
-    </table>
+        <table class="table">
+            <div class="d-flex" id="weekdays">
+                <div>日</div>
+                <div>一</div>
+                <div>二</div>
+                <div>三</div>
+                <div>四</div>
+                <div>五</div>
+                <div>六</div>
+            </div>
+            <tbody>
+                <!-- 動態渲染日期 -->
+            </tbody>
+        </table>
 
-
-
-    <!-- 新增行程Modal -->
-    <div id="add-modal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">新增</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input id="add-date" type="text">
-                    <input id="add-value" type="text">
-                </div>
-                <div class="modal-footer">
-                    <button onclick="addTodoItem()" type="button" class="btn btn-primary">新增</button>
+        <!-- 新增行程Modal -->
+        <div id="add-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">新增</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="add-date" type="text">
+                        <input id="add-value" type="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="addTodoItem()" type="button" class="btn btn-primary">新增</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 編輯行程Modal -->
-    <div id="edit-modal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">編輯</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input id="edit-date" type="text">
-                    <input id="edit-value" type="text">
-                </div>
-                <div class="modal-footer">
-                    <button onclick="deleteTodoItem()" type="button" class="btn btn-danger">刪除</button>
-                    <button onclick="editTodoItem()" type="button" class="btn btn-primary">修改</button>
+        <!-- 編輯行程Modal -->
+        <div id="edit-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">編輯</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="edit-date" type="text">
+                        <input id="edit-value" type="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="deleteTodoItem()" type="button" class="btn btn-danger">刪除</button>
+                        <button onclick="editTodoItem()" type="button" class="btn btn-primary">修改</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/e25bf20403.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e25bf20403.js" crossorigin="anonymous"></script>
 
-    <script>
-        //宣告
-        const today = new Date() //今天
-        let year = today.getFullYear() //年
-        let month = today.getMonth() //月份 1月是1
+        <script>
+            //宣告
+            const today = new Date() //今天
+            let year = today.getFullYear() //年
+            let month = today.getMonth() //月份 1月是1
 
-        let currentIndex
-        //DOM
-        const yearMonthText = document.querySelector('.year-month')
-        const dateArea = document.querySelector('tbody')
+            let currentIndex
+            //DOM
+            const yearMonthText = document.querySelector('.year-month')
+            const dateArea = document.querySelector('tbody')
 
-        const addModal = document.querySelector('#add-modal')
-        const editModal = document.querySelector('#edit-modal')
+            const addModal = document.querySelector('#add-modal')
+            const editModal = document.querySelector('#edit-modal')
 
-        const addDateInput = document.querySelector('#add-date')
-        const addValueInput = document.querySelector('#add-value')
-        const editDateInput = document.querySelector('#edit-date')
-        const editValueInput = document.querySelector('#edit-value')
+            const addDateInput = document.querySelector('#add-date')
+            const addValueInput = document.querySelector('#add-value')
+            const editDateInput = document.querySelector('#edit-date')
+            const editValueInput = document.querySelector('#edit-value')
 
-        //function
-        function renderDate() {
-            dateArea.innerHTML = ''
+            //function
+            function renderDate() {
+                dateArea.innerHTML = ''
 
-            yearMonthText.innerText = `${year}年 - ${month + 1}月`
+                yearMonthText.innerText = `${year}年 - ${month + 1}月`
 
-            //這個月第一天禮拜幾?
-            let firstDay = new Date(year, month, 1).getDay()
-            //每個月的第一天
-            let firstDate = new Date(year, month, 1).getDate()
-            //這個月有幾天?
-            let dayOfMonth = new Date(year, month + 1, 0).getDate()
-            //上個月的最後一天，也就是這個月的第0天
-            let lastDayOfLastMonth = new Date(year, month, 0).getDate()
-            //需要顯示多少上個月的日期
-            let preMonthDayCount = firstDay - 1
+                //這個月第一天禮拜幾?
+                let firstDay = new Date(year, month, 1).getDay()
+                //每個月的第一天
+                let firstDate = new Date(year, month, 1).getDate()
+                //這個月有幾天?
+                let dayOfMonth = new Date(year, month + 1, 0).getDate()
+                //上個月的最後一天，也就是這個月的第0天
+                let lastDayOfLastMonth = new Date(year, month, 0).getDate()
+                //需要顯示多少上個月的日期
+                let preMonthDayCount = firstDay - 1
 
-            let rows = Math.ceil((dayOfMonth + firstDay) / 7)
-            let day = 1
+                let rows = Math.ceil((dayOfMonth + firstDay) / 7)
+                let day = 1
 
-            for (let row = 0; row < rows; row++) {
-                let tr = document.createElement('tr')
-                for (let col = 0; col < 7; col++) {
-                    let td = document.createElement('td')
-                    //減去上個月的，date為負值
-                    let date = col - preMonthDayCount
-                    if (row == 0 && col < firstDay) {
-                        //上個月要顯示的日期
-                        td.innerText = lastDayOfLastMonth + date
-                    }
-                    else {
-                        if (day <= dayOfMonth) {
-                            //這個月
-                            let d = day
-                            td.innerText = day
-
-                            if (localStorage.getItem(`${year}-${month + 1}-${day}`) != null) {
-                                let ul = document.createElement('ul')
-
-                                let todoList = JSON.parse(localStorage.getItem(`${year}-${month + 1}-${day}`))
-                                todoList.forEach((item, index) => {
-                                    let li = document.createElement('li')
-                                    li.innerText = item.title
-
-                                    li.onclick = function (e) {
-                                        editDateInput.value = `${year}-${month + 1}-${d}`
-                                        editValueInput.value = item.title
-
-                                        currentIndex = index
-
-                                        bootstrap.Modal.getOrCreateInstance(editModal).show()
-                                        e.stopPropagation()
-                                    }
-
-                                    ul.appendChild(li)
-                                })
-                                td.appendChild(ul)
-                            }
-
-                            td.onclick = function () {
-                                addDateInput.value = `${year}-${month + 1}-${d}`
-                                bootstrap.Modal.getOrCreateInstance(addModal).show()
-                            }
+                for (let row = 0; row < rows; row++) {
+                    let tr = document.createElement('tr')
+                    tr.setAttribute('id', 'calendar')
+                    for (let col = 0; col < 7; col++) {
+                        let td = document.createElement('td')
+                        td.classList.add("day");
+                        //減去上個月的，date為負值
+                        let date = col - preMonthDayCount
+                        if (row == 0 && col < firstDay) {
+                            //上個月要顯示的日期
+                            td.innerText = lastDayOfLastMonth + date
                         }
                         else {
-                            //下個月
-                            td.innerText = firstDate
-                            firstDate++
+                            if (day <= dayOfMonth) {
+                                //這個月
+                                let d = day
+                                td.innerText = day
+
+                                if (localStorage.getItem(`${year}-${month + 1}-${day}`) != null) {
+                                    let ul = document.createElement('ul')
+
+                                    let todoList = JSON.parse(localStorage.getItem(`${year}-${month + 1}-${day}`))
+                                    todoList.forEach((item, index) => {
+                                        let li = document.createElement('li')
+                                        li.innerText = item.title
+
+                                        li.onclick = function (e) {
+                                            editDateInput.value = `${year}-${month + 1}-${d}`
+                                            editValueInput.value = item.title
+
+                                            currentIndex = index
+
+                                            bootstrap.Modal.getOrCreateInstance(editModal).show()
+                                            e.stopPropagation()
+                                        }
+
+                                        ul.appendChild(li)
+                                    })
+                                    td.appendChild(ul)
+                                }
+
+                                td.onclick = function () {
+                                    addDateInput.value = `${year}-${month + 1}-${d}`
+                                    bootstrap.Modal.getOrCreateInstance(addModal).show()
+                                }
+                            }
+                            else {
+                                //下個月
+                                td.innerText = firstDate
+                                firstDate++
+                            }
+                            day++
                         }
-                        day++
+                        tr.appendChild(td)
                     }
-                    tr.appendChild(td)
+                    dateArea.appendChild(tr)
                 }
-                dateArea.appendChild(tr)
-            }
-        }
-
-        function nextMonth() {
-            month++
-            if (month == 12) {
-                year++
-                month = 0
-            }
-            renderDate()
-        }
-
-        function previousMonth() {
-            month--
-            if (month == -1) {
-                year--
-                month = 11
-            }
-            renderDate()
-        }
-
-        //新增備忘錄
-        function addTodoItem() {
-            let date = addDateInput.value
-            let todoItem = addValueInput.value
-
-            let todoObj = {
-                title: todoItem
             }
 
-            let todoList = []
-
-            if (localStorage.getItem(date) == null) {
-                todoList.push(todoObj)
-            } else {
-                todoList = JSON.parse(localStorage.getItem(date))
-                todoList.push(todoObj)
+            function nextMonth() {
+                month++
+                if (month == 12) {
+                    year++
+                    month = 0
+                }
+                renderDate()
             }
 
-            localStorage.setItem(date, JSON.stringify(todoList))
-
-            bootstrap.Modal.getOrCreateInstance(addModal).hide()
-
-            renderDate()
-        }
-
-        //編輯備忘錄
-        function editTodoItem() {
-            let date = editDateInput.value
-            let todoItem = editValueInput.value
-
-            let todoList = JSON.parse(localStorage.getItem(date))
-
-            todoList[currentIndex] = {
-                title: todoItem
+            function previousMonth() {
+                month--
+                if (month == -1) {
+                    year--
+                    month = 11
+                }
+                renderDate()
             }
 
-            localStorage.setItem(date, JSON.stringify(todoList))
+            //新增備忘錄
+            function addTodoItem() {
+                let date = addDateInput.value
+                let todoItem = addValueInput.value
 
-            bootstrap.Modal.getOrCreateInstance(editModal).hide()
+                let todoObj = {
+                    title: todoItem
+                }
 
-            renderDate()
-        }
+                let todoList = []
 
-        //刪除備忘錄
-        function deleteTodoItem() {
-            let date = editDateInput.value
+                if (localStorage.getItem(date) == null) {
+                    todoList.push(todoObj)
+                } else {
+                    todoList = JSON.parse(localStorage.getItem(date))
+                    todoList.push(todoObj)
+                }
 
-            let todoList = JSON.parse(localStorage.getItem(date))
-            todoList.splice(currentIndex, 1)
+                localStorage.setItem(date, JSON.stringify(todoList))
 
-            localStorage.setItem(date, JSON.stringify(todoList))
+                bootstrap.Modal.getOrCreateInstance(addModal).hide()
 
-            bootstrap.Modal.getOrCreateInstance(editModal).hide()
+                renderDate()
+            }
 
-            renderDate()
-        }
+            //編輯備忘錄
+            function editTodoItem() {
+                let date = editDateInput.value
+                let todoItem = editValueInput.value
 
-        //window.onload
-        window.onload = function () {
-            renderDate()
-        }
-    </script>
+                let todoList = JSON.parse(localStorage.getItem(date))
+
+                todoList[currentIndex] = {
+                    title: todoItem
+                }
+
+                localStorage.setItem(date, JSON.stringify(todoList))
+
+                bootstrap.Modal.getOrCreateInstance(editModal).hide()
+
+                renderDate()
+            }
+
+            //刪除備忘錄
+            function deleteTodoItem() {
+                let date = editDateInput.value
+
+                let todoList = JSON.parse(localStorage.getItem(date))
+                todoList.splice(currentIndex, 1)
+
+                localStorage.setItem(date, JSON.stringify(todoList))
+
+                bootstrap.Modal.getOrCreateInstance(editModal).hide()
+
+                renderDate()
+            }
+
+            //window.onload
+            window.onload = function () {
+                renderDate()
+            }
+        </script>
 </body>
 
 </html>
