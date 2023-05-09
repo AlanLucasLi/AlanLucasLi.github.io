@@ -643,7 +643,7 @@
             let allMoreThanZero = true;
             $.each($(".card-span:odd"), function (index, item) {
                 if (parseFloat(item.innerText) - 1 < 0) {
-                    alert("無法全減，請按清除");
+                    alert("已有部分為0，無法使用全減");
                     allMoreThanZero = false;
                     return false;
                 }
