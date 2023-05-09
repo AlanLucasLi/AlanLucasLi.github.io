@@ -225,6 +225,7 @@
                         let date = col - preMonthDayCount
                         if (row == 0 && col < firstDay) {
                             //上個月要顯示的日期
+                            td.classList.add("text-black-50","pe-none");
                             td.innerText = lastDayOfLastMonth + date
                         }
                         else {
@@ -263,6 +264,7 @@
                             }
                             else {
                                 //下個月
+                                td.classList.add("text-black-50","pe-none");
                                 td.innerText = firstDate
                                 firstDate++
                             }
